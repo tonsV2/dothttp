@@ -15,7 +15,12 @@ def cli(files):
         request_line, headers_and_body = file.read().split('\n', 1)
         message = email.message_from_file(StringIO(headers_and_body))
 
-        method, request_uri, http_version = request_line.split(' ')
+        request_line_split = request_line.split(' ')
+        if len(request_line_split) == 3:
+            method, request_uri, http_version = request_line_split
+        elif len(request_line_split) == 2:
+            method, request_uri = request_line_split
+            http_version = "HTTP/1.1"
         headers = dict(message.items())
         message_body = message.get_payload()
 

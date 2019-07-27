@@ -9,4 +9,4 @@ dothttp examples/request.http
 ## Quirks
 * Request URI needs to be absolute
 * Host header will be overwritten
-* HTTP Version is ignored... But mandatory
+* HTTP Version is ignored
