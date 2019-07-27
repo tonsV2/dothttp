@@ -1,4 +1,4 @@
-# dothttp - Perform http requests from files
+# dothttp - Perform http requests defined in files
 
 Please see the examples folder for examples.
 
