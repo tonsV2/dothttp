@@ -15,12 +15,7 @@ def cli(files):
         request_line, headers_and_body = file.read().split('\n', 1)
         message = email.message_from_file(StringIO(headers_and_body))
 
-        request_line_split = request_line.split(' ')
-        if len(request_line_split) == 3:
-            method, request_uri, http_version = request_line_split
-        elif len(request_line_split) == 2:
-            method, request_uri = request_line_split
-            http_version = "HTTP/1.1"
+        method, request_uri = request_line.split(' ')
         headers = dict(message.items())
         message_body = message.get_payload()
 
@@ -43,7 +38,7 @@ def cli(files):
         connection.close()
 
         # Print http response
-        print("%s %s %s" % (http_version, response.status, http.client.responses[response.status]))
+        print("%s %s" % (response.status, response.reason))
         response_headers = response.headers
         for key in response_headers:
             print("%s: %s" % (key, response_headers[key]))
