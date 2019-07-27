@@ -11,11 +11,10 @@ import click
 @click.argument('files', nargs=-1, type=click.File('r'), required=True)
 def cli(files):
     for file in files:
-        # Read file
+        # Parse http request
         request_line, headers_and_body = file.read().split('\n', 1)
         message = email.message_from_file(StringIO(headers_and_body))
 
-        # Parse http request
         method, request_uri, http_version = request_line.split(' ')
         headers = dict(message.items())
         message_body = message.get_payload()
