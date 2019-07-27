@@ -1,0 +1,6 @@
+GET https://www.reddit.com/.json ver
+Host: reddit.com
+
+body
+body
+body
