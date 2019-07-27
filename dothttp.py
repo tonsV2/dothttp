@@ -43,9 +43,8 @@ def request(file):
 
     # Print http response
     print("%s %s" % (response.status, response.reason))
-    response_headers = response.headers
-    for key in response_headers:
-        print("%s: %s" % (key, response_headers[key]))
+    for key, val in response.headers.items():
+        print("%s: %s" % (key, val))
     pprint(body)
 
 
