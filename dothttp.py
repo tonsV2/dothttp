@@ -1,7 +1,7 @@
 import email
 from io import StringIO
 from urllib.parse import urlparse
-import http.client
+from http.client import HTTPConnection, HTTPSConnection
 import ssl
 from pprint import pprint
 import click
@@ -32,9 +32,9 @@ def cli(files):
             path = '%s?%s' % (path, parsed.query)
         connection = {}
         if parsed.scheme == 'http':
-            connection = http.client.HTTPConnection(hostname)
+            connection = HTTPConnection(hostname)
         elif parsed.scheme == 'https':
-            connection = http.client.HTTPSConnection(hostname, timeout=8, context=ssl._create_unverified_context())
+            connection = HTTPSConnection(hostname, timeout=8, context=ssl._create_unverified_context())
         headers['Host'] = parsed.netloc
         connection.request(method, path, message_body, headers=headers)
         response = connection.getresponse()
