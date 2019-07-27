@@ -30,6 +30,14 @@ pip install dothttp
 ```bash
 dothttp examples/request.http
 ```
+Or
+```bash
+dothttp examples/request.http examples/httpbin.http ...
+```
+Or
+```bash
+dothttp examples/*.http
+```
 
 ## Quirks/Notes
 * Request URI needs to be absolute
