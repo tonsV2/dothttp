@@ -1,5 +1,4 @@
-POST https://postman-echo.com/post HTTP/1.1
-Host: reddit.com
+POST https://postman-echo.com/post
 
 body
 body

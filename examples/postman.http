@@ -1,4 +1,4 @@
-GET https://postman-echo.com/ ver
+GET https://postman-echo.com/
 Host: reddit.com
 
 body

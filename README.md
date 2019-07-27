@@ -12,8 +12,14 @@ Header-field: Header-value
 Request-Body
 ```
 
-## Examples 
-Please see the examples folder.
+## Example
+```
+GET http://httpbin.org/
+Connection: keep-alive
+Accept: text/html
+Accept-Language: en-US,en;q=0.9,es;q=0.8
+```
+Please see the examples folder for more.
 
 ## Install
 ```bash
