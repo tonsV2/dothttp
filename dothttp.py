@@ -8,7 +8,7 @@ import click
 
 
 @click.command()
-@click.argument('files', nargs=-1, type=click.File('r'), required=False)
+@click.argument('files', nargs=-1, type=click.File('r'), required=True)
 def cli(files):
     for file in files:
         # Read file
