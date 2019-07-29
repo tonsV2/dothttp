@@ -1,9 +1,10 @@
 import email
-from io import StringIO
-from urllib.parse import urlparse
-from http.client import HTTPConnection, HTTPSConnection
 import ssl
+from http.client import HTTPConnection, HTTPSConnection
+from io import StringIO
 from pprint import pprint
+from urllib.parse import urlparse
+
 import click
 
 
