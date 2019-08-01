@@ -23,7 +23,7 @@ Please see the examples folder for more.
 
 ## Install
 ```bash
-pip install dothttp
+pip3 install dothttp
 ```
 
 ## Usage
