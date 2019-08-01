@@ -38,6 +38,10 @@ Or
 ```bash
 dothttp examples/*.http
 ```
+Or
+```bash
+echo "GET https://www.google.com" | dothttp -
+```
 
 ## Quirks/Notes
 * Request URI needs to be absolute
