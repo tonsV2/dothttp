@@ -40,7 +40,16 @@ def request(file):
     headers['Host'] = parsed.netloc
     connection.request(method, path, message_body, headers=headers)
     response = connection.getresponse()
-    body = response.read().decode('ISO-8859-1')
+
+    mimetype = ""
+    chartset = ""
+    body = ""
+    if 'Content-Type' in response.headers:
+        content_type = response.headers['Content-Type']
+        mimetype, chartset = content_type.split('; charset=', 1)
+        body = response.read().decode(chartset)
+    else:
+        body = response.read().decode("ISO-8859-1")
     response.close()
     connection.close()
 
@@ -48,8 +57,7 @@ def request(file):
     print("%s %s" % (response.status, response.reason))
     for key, val in response.headers.items():
         print(colored(key, "cyan") + ": " + colored(val, "yellow"))
-    if 'Content-Type' in response.headers:
-        mimetype = response.headers['Content-Type'].split(';')[0]
+    if mimetype:
         lexer = lexers.get_lexer_for_mimetype(mimetype)
         if 'application/json' in mimetype:
             body = json.dumps(json.loads(body), indent=4)
