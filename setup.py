@@ -8,6 +8,8 @@ setup(
     py_modules=['dothttp'],
     install_requires=[
         'click',
+        'pygments',
+        'termcolor'
     ],
     entry_points='''
         [console_scripts]
