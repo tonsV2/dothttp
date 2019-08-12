@@ -2,7 +2,7 @@ from setuptools import setup
 
 setup(
     name='dothttp',
-    version='1.1.0',
+    version='1.2.0',
     description='See https://github.com/tonsV2/dothttp',
     python_requires='>=3',
     py_modules=['dothttp'],

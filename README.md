@@ -49,3 +49,16 @@ echo "GET https://www.google.com" | dothttp -
 ## Quirks/Notes
 * Request URI needs to be absolute
 * Host header will be overwritten
+
+## Releases
+*1.2.0*
+- Multi request files
+
+*1.1.0*
+- Syntax highlighting of output
+
+*1.0.1*
+- Bug fix
+
+*1.0.0*
+- Initial release
