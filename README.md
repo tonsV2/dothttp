@@ -13,6 +13,8 @@ Header-field: Header-value
 Request-Body
 ```
 
+A file can contain multiple requests separated by three hash signs (###). Please see [examples/heads.http](examples/heads.http)
+
 ## Example
 ```
 GET http://httpbin.org/
@@ -20,7 +22,7 @@ Connection: keep-alive
 Accept: text/html
 Accept-Language: en-US,en;q=0.9,es;q=0.8
 ```
-Please see the examples folder for more.
+Please see the [examples/](examples/) folder for more.
 
 ## Install
 ```bash

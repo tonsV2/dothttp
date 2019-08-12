@@ -14,14 +14,15 @@ from termcolor import colored
 @click.argument('files', nargs=-1, type=click.File('r'), required=True)
 def cli(files):
     for file in files:
-        request(file)
+        requests = file.read().split('\n###\n')
+        for request in requests:
+            do_request(request)
 
 
-def request(file):
+def do_request(request):
     # Parse http request
-    request_line, headers_and_body = file.read().split('\n', 1)
+    request_line, headers_and_body = request.lstrip().split('\n', 1)
     message = email.message_from_file(StringIO(headers_and_body))
-
     method, request_uri = request_line.split(' ')
     headers = dict(message.items())
     message_body = message.get_payload()
@@ -41,6 +42,7 @@ def request(file):
     connection.request(method, path, message_body, headers=headers)
     response = connection.getresponse()
 
+    # Parse response
     mimetype = ""
     chartset = ""
     body = ""
@@ -62,7 +64,7 @@ def request(file):
         if 'application/json' in mimetype:
             body = json.dumps(json.loads(body), indent=4)
         colored_output = highlight(body, lexer, formatters.TerminalFormatter())
-        print(colored_output)
+        print(colored_output.strip())
     else:
         print(body)
 
