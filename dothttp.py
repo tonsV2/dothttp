@@ -44,15 +44,15 @@ def do_request(request):
 
     # Parse response
     mimetype = ""
-    chartset = ""
+    charset = ""
     body = ""
     if 'Content-Type' in response.headers:
         content_type = response.headers['Content-Type']
         if "; charset=" in content_type:
-            mimetype, chartset = content_type.split('; charset=', 1)
+            mimetype, charset = content_type.split('; charset=', 1)
         else:
-            mimetype, chartset = content_type, "ISO-8859-1"
-        body = response.read().decode(chartset)
+            mimetype, charset = content_type, "ISO-8859-1"
+        body = response.read().decode(charset)
     else:
         body = response.read().decode("ISO-8859-1")
     response.close()
