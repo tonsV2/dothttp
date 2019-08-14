@@ -13,7 +13,11 @@ Header-field: Header-value
 Request-Body
 ```
 
+### Multiple requests
 A file can contain multiple requests separated by three hash signs (###). Please see [examples/heads.http](examples/heads.http)
+
+### Request-Body Shell Expressions 
+Evaluate shell expressions in the request body using ```$(expression)```. Please see [examples/postman.http](examples/postman.http)
 
 ## Example
 ```
@@ -51,6 +55,9 @@ echo "GET https://www.google.com" | dothttp -
 * If the "Host" header is not set the hostname from the Request-URI is used
 
 ## Releases
+*1.3.0*
+- Request-Body Shell Expressions
+
 *1.2.0*
 - Multi request files
 
