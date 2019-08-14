@@ -1,0 +1,5 @@
+POST https://svik-ml-dev.erst.dk/dokumentredskaber/underskrift-detektor/v2/detekter_underskrifter/
+{
+ "mimetype": "application/pdf",
+ "dokument": "$(base64 fp_dc_setup_guide.pdf)"
+}

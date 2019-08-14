@@ -4,3 +4,4 @@ Host: reddit.com
 body
 body
 body
+$(echo "2 + 2 * 2" | bc)

@@ -1,6 +1,8 @@
 import email
 import json
+import re
 import ssl
+import subprocess
 from http.client import HTTPConnection, HTTPSConnection
 from io import StringIO
 from urllib.parse import urlparse
@@ -26,6 +28,12 @@ def do_request(request):
     method, request_uri = request_line.split(' ')
     headers = dict(message.items())
     message_body = message.get_payload()
+
+    # Eval body
+    expressions = re.findall(r'\$\((.*?)\)', message_body)
+    for expression in expressions:
+        value = subprocess.run(expression, capture_output=True, shell=True, encoding='UTF-8').stdout.rstrip()
+        message_body = message_body.replace(f"$({expression})", value)
 
     # Perform http request
     parsed = urlparse(request_uri)
