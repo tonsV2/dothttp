@@ -48,7 +48,7 @@ echo "GET https://www.google.com" | dothttp -
 
 ## Quirks/Notes
 * Request URI needs to be absolute
-* Host header will be overwritten
+* If the "Host" header is not set the hostname from the Request-URI is used
 
 ## Releases
 *1.2.0*

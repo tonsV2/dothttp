@@ -46,7 +46,8 @@ def do_request(request):
         connection = HTTPConnection(hostname)
     elif parsed.scheme == 'https':
         connection = HTTPSConnection(hostname, timeout=8, context=ssl._create_unverified_context())
-    headers['Host'] = parsed.netloc
+    if 'Host' not in headers:
+        headers['Host'] = parsed.netloc
     connection.request(method, path, message_body, headers=headers)
     response = connection.getresponse()
 
